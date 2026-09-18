@@ -13,10 +13,12 @@ class Author:
     """Acteur   :
     - id_author                      : clé primaire de l'entité persistante
     - biography                      : biographie de l'auteur
+    - id_user                        : id de l'utilisateur
     """
     id_author: Optional[int] = field(default=None, init=False)
     biography: str
+    id_user: Optional[int] = field(default=None, init=False)
 
     def __str__(self) -> str:
-        book_str = f" {self.biography},\n"
-        return book_str
+        author_str = f" {self.biography},{self.id_user}\n"
+        return author_str
