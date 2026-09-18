@@ -17,6 +17,7 @@ class Book:
     - title                     : nom du livre
     - resume                    : résumé du livre
     - number_of_pages           : nombre de pages du livre
+    - id_author                : id du livre
     """
     isbn: Optional[int] = field(default=None, init=False)
     title: str
@@ -24,8 +25,11 @@ class Book:
     number_of_pages: int
     id_author: Author
 
+    def __init__(self):
+        self.author = None
+
     def __str__(self) -> str:
-        book_str = f"{self.title} ({self.resume} – {self.number_of_pages}),\n"
+        book_str = f"{self.title},{self.resume}, {self.number_of_pages}),{self.id_author}\n"
         book_str += f"écrit par {self.id_author}" \
             if self.id_author is not None else "aucun d'auteur renseigné "
         return book_str
